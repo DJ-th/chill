@@ -1,0 +1,36 @@
+ <footer>
+      <div class='footer'>
+  <div class='footer-contents'>
+    <div class='chill-details'>
+      <h2 class='footer-content-head1'>.chill</h2>
+      <ul>
+        <li><%= link_to '会社概要（運営会社)',"#", class:"footer-link" %></li>
+        <li><%= link_to 'プライバシーポリシー',"#", class:"footer-link" %></li>
+        <li><%= link_to '.chill利用規約', "#", class:"footer-link" %></li>
+      </ul>
+    </div>
+     <div class='chill-details'>
+      <h2 class='footer-content-head2'>.chill　オーナー様</h2>
+      <ul>
+      <% if owner_signed_in? %>
+      <li><%= link_to current_owner.name, "#"%></li>
+      <li><%= link_to 'ログアウト',destroy_owner_session_path, method: :delete%></li>
+      <li><%= link_to "投稿する", new_foodstall_path %></li>
+      <% else %>
+        <li><%= link_to 'オーナー新規投稿', new_owner_registration_path, class:"footer-link" %></li>
+        <li><%= link_to 'オーナーログイン', new_owner_session_path, class:"footer-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='chill-details'>
+      <h2 class='footer-content-head3'>.chillについて</h2>
+      <ul>
+        <li><%= link_to '.chillオーナーガイド', "#", class:"footer-link"%></li>
+        <li ><%= link_to '.chillオーナー利用ガイドライン', "#",  class:"footer-link"%></li>
+        <li><%= link_to 'お知らせ', "#", class:"footer-link" %></li>
+      </ul>
+    </div>
+  </div>
+  <p>© .chill</p>
+</div>
+    </footer>

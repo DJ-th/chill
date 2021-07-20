@@ -1,0 +1,15 @@
+      <header class="header">
+      <div class="header_bar">
+        <h1 class="grid-6"><a href="/"><%= image_tag 'logo2.png', class: 'logo'%></a></h1>
+      <ul class="main-nav">
+      <% if owner_signed_in? %>
+      <li><%= link_to current_owner.name, "#"%></li>
+      <li><%= link_to 'ログアウト',destroy_owner_session_path, method: :delete%></li>
+      <li><%= link_to "出店する", new_foodstall_path %></li>
+      <% else %>
+        <li><%= link_to 'オーナー新規投稿', new_owner_registration_path, class:"footer-link" %></li>
+        <li><%= link_to 'オーナーログイン', new_owner_session_path, class:"footer-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+    </header>

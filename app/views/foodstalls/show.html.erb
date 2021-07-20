@@ -1,0 +1,52 @@
+<% if owner_signed_in?%>
+  <%= render "owners/shared/header" %>
+  <%else%>
+  <%= render "users/shared/header" %>
+  <%end%>
+
+  <div class="foodstall-show">
+  <div class="foodstall-show-title">
+  <h1>
+  <%= @foodstall.shop_name %>
+  </h1>
+  </div>
+  
+  <div class="foodstall-image">
+  <% @foodstall.images.each do |image|%>
+  <%= image_tag  image %>
+  <% end %>
+  </div>
+
+  <div class="footstall-category">
+   <h5>
+   <%= @foodstall.category.name%>
+   </h5>
+   </div>
+
+   <div class="foodstall-title">
+   <h2><%=@foodstall.title%></h2>
+   </div>
+
+   <div class="foodstall-text">
+   <p><%=@foodstall.text%></p>
+   </div>
+
+   <div class="addresses">
+   <div class="foodstall-post">
+   <%= @foodstall.post_code %>
+   </div>
+
+   <div class="foodstall-prefecture">
+   <%= @foodstall.prefecture.name%>
+   </div>
+   
+   <div class="foodstall-adress">
+   <%= @foodstall.address %>
+   </div>
+
+   <div class="foodstall-building">
+   <%= @foodstall.building_name %>
+   </div>
+   </div>
+
+   

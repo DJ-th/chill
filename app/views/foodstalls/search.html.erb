@@ -1,0 +1,39 @@
+<% if owner_signed_in?%>
+  <%= render "owners/shared/header" %>
+  <%else%>
+  <%= render "users/shared/header" %>
+  <%end%>
+
+<h1>
+  検索結果
+</h1>
+<%# 検索結果の個数で条件分岐 %>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <br>
+    <li class="list">
+      <h2>
+      <%= link_to foodstall_path(result.id) do %>
+      <%= result.shop_name%>
+      <% end %>
+      </h2>
+      <%= link_to foodstall_path(result.id) do %>
+      <% result.images.each do |image| %>
+      <%= image_tag  image, class:'images' %>
+      <% end %>
+      <% end %>
+      </li>
+      <li class="list">
+      <p><%= result.category.name %></p>
+      <h4><%= result.prefecture.name %></h4>
+      <p><%= result.city_name %><%= result.address%><%= result.building_name%></p>
+      </li>
+  <% end %>
+<% else %>
+  該当する商品はありません
+<% end %>
+
+
+
+ <%= link_to 'トップページへ戻る', root_path %>
+ 

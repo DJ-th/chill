@@ -1,0 +1,36 @@
+  <% if owner_signed_in?%>
+  <%= render "owners/shared/header" %>
+  <%else%>
+  <%= render "users/shared/header" %>
+  <%end%>
+<div class="home-content">
+  <h2>週末みんなでchillちゃおう</h2>
+  　 <p>ここは週末に落ち着く場所のカフェやシーシャ屋をピックアップ。自然あふれる場所で、大人の時間をお過ごしください</p>
+  <div class= "keyword-bottom">
+ <%= search_form_for @q, url: foodstalls_search_path do |f| %>
+  <%= f.label :category_id_eq, 'カテゴリー' %>
+  <%= f.collection_select(:category_id_eq, Category.all, :id, :name, include_blank: '指定なし' )%>
+  
+   <%= f.label :prefecture_id_eq, '都道府県' %>
+     <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし'%>
+    
+  <%= f.submit '検索' %>
+ <% end %>
+ </div>
+<div class="keyword-bottom">
+  <%= search_form_for @q, url: foodstalls_search_path do |f| %>
+  <%=f.search_field :title_or_shop_name_or_city_name_cont, placeholder: "店舗名"%>
+  <%= f.submit "検索"%>
+  <% end %>
+</div>
+   <%= image_tag 'main4.jpg', class: 'mein'%> 
+</div>
+   <div class="user_nav grid-6">
+      <a class="post" href="/tweets/new"></a>
+   </div>
+
+   <% if owner_signed_in?%>
+  <%= render "owners/shared/footer" %>
+  <%else%>
+  <%= render "users/shared/footer" %>
+  <%end%>
