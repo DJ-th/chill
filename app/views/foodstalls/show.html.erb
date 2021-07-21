@@ -49,4 +49,135 @@
    </div>
    </div>
 
-   
+
+   <table class="calendar_table" border="1" style="border-collapse: collapse">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thr</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>
+                <table class="inner_table time_list" border="1" frame="void" style="border-collapse: collapse; border-width: 1px 0;">
+                    <tbody>
+                        <tr>
+                            <th>9:00</th>
+                        </tr>
+                        <tr>
+                            <th>10:00</th>
+                        </tr>
+                        <tr>
+                            <th>11:00</th>
+                        </tr>
+                        <tr>
+                            <th>12:00</th>
+                        </tr>
+                        <tr>
+                            <th>13:00</th>
+                        </tr>
+                        <tr>
+                            <th>14:00</th>
+                        </tr>
+                        <tr>
+                            <th>15:00</th>
+                        </tr>
+                        <tr>
+                            <th>16:00</th>
+                        </tr>
+                        <tr>
+                            <th>17:00</th>
+                        </tr>
+                        <tr>
+                            <th>18:00</th>
+                        </tr>
+                        <tr>
+                            <th>19:00</th>
+                        </tr>
+                        <tr>
+                            <th>20:00</th>
+                        </tr>
+                        <tr>
+                            <th>21:00</th>
+                        </tr>
+                        <tr>
+                            <th>22:00</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </th>
+
+            <% 7.times do |n| %>
+            <th>
+                <table class="inner_table" border="1" frame="void" style="border-collapse: collapse; border-width: 1px 0;">
+                    <tbody>
+                        <% 14.times do |t| %>
+                            <tr>
+                                <td class="close_cell">
+                                    <span>×</span>
+                                </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </th>
+            <% end %>
+            <th>
+                <table class="inner_table time_list" border="1" frame="void" style="border-collapse: collapse; border-width: 1px 0;">
+                    <tbody>
+                        <tr>
+                            <th>9:00</th>
+                        </tr>
+                        <tr>
+                            <th>10:00</th>
+                        </tr>
+                        <tr>
+                            <th>11:00</th>
+                        </tr>
+                        <tr>
+                            <th>12:00</th>
+                        </tr>
+                        <tr>
+                            <th>13:00</th>
+                        </tr>
+                        <tr>
+                            <th>14:00</th>
+                        </tr>
+                        <tr>
+                            <th>15:00</th>
+                        </tr>
+                        <tr>
+                            <th>16:00</th>
+                        </tr>
+                        <tr>
+                            <th>17:00</th>
+                        </tr>
+                        <tr>
+                            <th>18:00</th>
+                        </tr>
+                        <tr>
+                            <th>19:00</th>
+                        </tr>
+                        <tr>
+                            <th>20:00</th>
+                        </tr>
+                        <tr>
+                            <th>21:00</th>
+                        </tr>
+                        <tr>
+                            <th>22:00</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </th>
+        </tr>
+    </tbody>
+</table>
