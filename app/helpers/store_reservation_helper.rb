@@ -1,0 +1,2 @@
+module StoreReservationHelper
+end

@@ -9,8 +9,9 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  root to: 'foodstalls#index'
+   root to: 'foodstalls#index'
   get 'foodstalls/search'
+  resources :store_reservations
   resources :foodstalls do
      collection do
        get 'search'

@@ -5,6 +5,8 @@ class Foodstall < ApplicationRecord
    belongs_to_active_hash :prefecture
    has_many_attached :images
 
+  has_many :store_reservations
+
   with_options presence: true do
     validates :title
     validates :images

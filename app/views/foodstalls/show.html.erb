@@ -49,135 +49,80 @@
    </div>
    </div>
 
+<div class="food-stall">
+   <%= @foodstall.phone_number%>
+</div>
+<p>
+  <%= @today&.strftime("< %m / %Y >") %>
+</p>
+<table border="1">
+    <tr>
+    <th>時間</th>
+    <% 10.times do |n| %>
+    <th> 
 
-   <table class="calendar_table" border="1" style="border-collapse: collapse">
-    <thead>
-      <tr>
-        <th></th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thr</th>
-        <th>Fri</th>
-        <th>Sat</th>
-        <th>Sun</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>
-                <table class="inner_table time_list" border="1" frame="void" style="border-collapse: collapse; border-width: 1px 0;">
-                    <tbody>
-                        <tr>
-                            <th>9:00</th>
-                        </tr>
-                        <tr>
-                            <th>10:00</th>
-                        </tr>
-                        <tr>
-                            <th>11:00</th>
-                        </tr>
-                        <tr>
-                            <th>12:00</th>
-                        </tr>
-                        <tr>
-                            <th>13:00</th>
-                        </tr>
-                        <tr>
-                            <th>14:00</th>
-                        </tr>
-                        <tr>
-                            <th>15:00</th>
-                        </tr>
-                        <tr>
-                            <th>16:00</th>
-                        </tr>
-                        <tr>
-                            <th>17:00</th>
-                        </tr>
-                        <tr>
-                            <th>18:00</th>
-                        </tr>
-                        <tr>
-                            <th>19:00</th>
-                        </tr>
-                        <tr>
-                            <th>20:00</th>
-                        </tr>
-                        <tr>
-                            <th>21:00</th>
-                        </tr>
-                        <tr>
-                            <th>22:00</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </th>
-
-            <% 7.times do |n| %>
-            <th>
-                <table class="inner_table" border="1" frame="void" style="border-collapse: collapse; border-width: 1px 0;">
-                    <tbody>
-                        <% 14.times do |t| %>
-                            <tr>
-                                <td class="close_cell">
-                                    <span>×</span>
-                                </td>
-                            </tr>
-                        <% end %>
-                    </tbody>
-                </table>
-            </th>
-            <% end %>
-            <th>
-                <table class="inner_table time_list" border="1" frame="void" style="border-collapse: collapse; border-width: 1px 0;">
-                    <tbody>
-                        <tr>
-                            <th>9:00</th>
-                        </tr>
-                        <tr>
-                            <th>10:00</th>
-                        </tr>
-                        <tr>
-                            <th>11:00</th>
-                        </tr>
-                        <tr>
-                            <th>12:00</th>
-                        </tr>
-                        <tr>
-                            <th>13:00</th>
-                        </tr>
-                        <tr>
-                            <th>14:00</th>
-                        </tr>
-                        <tr>
-                            <th>15:00</th>
-                        </tr>
-                        <tr>
-                            <th>16:00</th>
-                        </tr>
-                        <tr>
-                            <th>17:00</th>
-                        </tr>
-                        <tr>
-                            <th>18:00</th>
-                        </tr>
-                        <tr>
-                            <th>19:00</th>
-                        </tr>
-                        <tr>
-                            <th>20:00</th>
-                        </tr>
-                        <tr>
-                            <th>21:00</th>
-                        </tr>
-                        <tr>
-                            <th>22:00</th>
-                        </tr>
-                    </tbody>
-                </table>
-            </th>
-        </tr>
-    </tbody>
+          <% @th_date =  Date.today + n %>
+          <% @th_header = @th_date.strftime("%m/%d %a") %>
+          <%= @th_header %>
+    </th>
+  <%end%>
+    </tr>
+    <% 9.times do |i|%>
+    <tr>
+      <th>
+        <% @th_time = Time.new(2021,7,22,i+10,00,00) %>
+        <%= @th_time.strftime("%H:%M") %>
+      </th>
+      <% 10.times do |d| %>
+      <td>
+        <% @th_date =  Date.today + d %>
+       <% @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).length%>
+       <%= @td_number %>
+      </td>
+      <% end %>
+    </tr>
+    <% end %>
 </table>
+
+<table border="1">
+  <% 4.times do |i| %>
+    <tr>
+      <% 3.times do |n| %>
+        <td> <%= 1+i %>-<%= 1+n%>
+        <% if i >= 2 %>
+        <span>○</span>
+        <%else%>
+        <span>×</span>
+        <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+
+
+<% if StoreReservation.find(1) != nil %>
+<span>1</span>
+<%else%>
+<span></span>
+
+<%end%>
+
+
+
+
+<% if StoreReservation.where(user_id: 1) != [] %>
+<span>1</span>
+<%else%>
+<span></span>
+<%end%>
+
+予約日が2021年7月22日19時からのやつがあるか
+
+<% if StoreReservation.where(visit_date_time: DateTime.new(2021, 7, 22, 19, 00, 00)) != [] %>
+<span>1</span>
+<%else%>
+<span></span>
+<%end%>
+
+StoreReservation.where(visit_date_time: DateTime.new(2021, 7, 22, 19, 00, 00)).length

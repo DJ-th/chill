@@ -80,7 +80,9 @@ margin-bottom: 150px;
   left: 220px;
   text-shadow: 0 0 20px rgba(252, 252, 252, 0.9);
 }
-
+.keyword-top{
+  position: absolute;
+}
 .footer-contents{
   display: flex;
   justify-content: space-around;

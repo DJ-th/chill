@@ -1,0 +1,11 @@
+<%= form_for @store_reservation do |f| %>
+  <%= @store_reservation.name %>
+  <%= @store_reservation.emai %>
+  <%= @store_reservation.phone_number%>
+  <div class="actions">
+    <%= f.submit '投稿画面に戻る', name: 'back' %>
+  </div>
+  <div class="actions">
+    <%= f.submit '投稿する' %>
+  </div>
+<% end %>
