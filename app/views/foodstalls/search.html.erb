@@ -12,22 +12,22 @@
   <% @results.each do |result| %>
     <br>
     <li class="list">
-      <h2>
+      <h2 class="list-title">
       <%= link_to foodstall_path(result.id) do %>
       <%= result.shop_name%>
+      <p class="list-category"><%= result.category.name %></p>
       <% end %>
-      </h2>
       <%= link_to foodstall_path(result.id) do %>
       <% result.images.each do |image| %>
-      <%= image_tag  image, class:'images' %>
+      <%= image_tag image, class:'images' %>
       <% end %>
       <% end %>
-      </li>
-      <li class="list">
-      <p><%= result.category.name %></p>
+      </h2>
+      <div class="list-text">
       <h4><%= result.prefecture.name %></h4>
       <p><%= result.city_name %><%= result.address%><%= result.building_name%></p>
-      </li>
+      </div>
+    </li>
   <% end %>
 <% else %>
   該当する商品はありません

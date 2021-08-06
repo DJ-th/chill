@@ -2,6 +2,10 @@ class FoodstallsController < ApplicationController
   before_action :search_foodstall, only: [:index, :search]
   def index
     @foodstalls = Foodstall.all
+     set_foodstall_column
+    @foodstalls = @p.result(distinct: true)
+    @prefecture = Prefecture.where(params[:id])
+    @category = Category.where(params[:id])
   end
 
   def new
@@ -11,7 +15,7 @@ class FoodstallsController < ApplicationController
   def create
       @foodstall = Foodstall.new(foodstall_params)
      if @foodstall.save
-       redirect_to search_foodstalls_path
+       redirect_to foodstalls_search_path
    else
      render :new
    end
@@ -19,13 +23,19 @@ class FoodstallsController < ApplicationController
 
  def search
   @foodstalls = Foodstall.all
-  @results = @q.result
+  @results = @p.result
+   set_foodstall_column
+   @category = Category.where(params[:id])
+   @prefecture = Prefecture.where(params[:id])
  end
 
  def show
   @foodstall = Foodstall.find(params[:id])
+
   @date = Date.today
   @wdays = ['月','火','水','木','金','土','日']
+  @comment = Comment.new
+    @comments = @foodstall.comments.includes(:user)
  end
 
 
@@ -33,11 +43,16 @@ class FoodstallsController < ApplicationController
   def foodstall_params
     params.require(:foodstall).permit(:category_id, :shop_name, :post_code, :city_name, :address, :phone_number, :building_name, :prefecture_id, :title, :text, images:[]).merge(owner_id: current_owner.id)
   end
+  def set_q
+    @p = Foodstall.ransack(params[:q])
+  end
+
   def search_foodstall
-    @q = Foodstall.ransack(params[:q])  
+    @p = Foodstall.ransack(params[:q])  
   end
   def set_foodstall_column
     @foodstall_category_name = Foodstall.select("category").distinct
+    @foodstall_prefecture_name = Foodstall.select("prefecture").distinct
   end
   
 end

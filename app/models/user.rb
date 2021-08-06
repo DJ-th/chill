@@ -6,5 +6,6 @@ class User < ApplicationRecord
            validates :name, presence: true 
 
   has_many :store_reservations
+  has_many :comments
 
 end

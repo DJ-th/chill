@@ -1,0 +1,5 @@
+<% form_for url: foodstall_path(params[:id]) do |f| %>
+  <div><%= f.text_field :title, class: "hogehoge" %></div>
+  <%= f.text_area :content, class: "hogehoge", size: "100x50" %>
+  <%= f.submit %>
+<% end %>

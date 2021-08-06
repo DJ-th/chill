@@ -76,53 +76,31 @@
       <% 10.times do |d| %>
       <td>
         <% @th_date =  Date.today + d %>
+        <%=link_to  new_store_reservation_path  do %>
        <% @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).length%>
-       <%= @td_number %>
+       <%= @td_number %> 
+     
+      <% end %>
       </td>
       <% end %>
     </tr>
     <% end %>
 </table>
 
-<table border="1">
-  <% 4.times do |i| %>
-    <tr>
-      <% 3.times do |n| %>
-        <td> <%= 1+i %>-<%= 1+n%>
-        <% if i >= 2 %>
-        <span>○</span>
-        <%else%>
-        <span>×</span>
-        <% end %>
-        </td>
+<div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@foodstall, @comment], local: true) do |form| %>
+      
+        <%= link_to 'コメント投稿フォーム', new_foodstall_comment_path(:foodstall_id) %>
       <% end %>
-    </tr>
-  <% end %>
-</table>
-
-
-<% if StoreReservation.find(1) != nil %>
-<span>1</span>
-<%else%>
-<span></span>
-
-<%end%>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+     
 
 
 
 
-<% if StoreReservation.where(user_id: 1) != [] %>
-<span>1</span>
-<%else%>
-<span></span>
-<%end%>
 
-予約日が2021年7月22日19時からのやつがあるか
 
-<% if StoreReservation.where(visit_date_time: DateTime.new(2021, 7, 22, 19, 00, 00)) != [] %>
-<span>1</span>
-<%else%>
-<span></span>
-<%end%>
 
-StoreReservation.where(visit_date_time: DateTime.new(2021, 7, 22, 19, 00, 00)).length

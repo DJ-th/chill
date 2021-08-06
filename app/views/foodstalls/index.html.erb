@@ -1,31 +1,66 @@
+<%# <div id= "home" class="big-bg"> %>
+<%# <%= image_tag 'main10.jpg', class: 'icon' %> 
+<header class="header">
+<div class="main">
   <% if owner_signed_in?%>
   <%= render "owners/shared/header" %>
   <%else%>
   <%= render "users/shared/header" %>
   <%end%>
-<div class="home-content">
-  <h2>週末みんなでchillちゃおう</h2>
-  　 <p>ここは週末に落ち着く場所のカフェやシーシャ屋をピックアップ。自然あふれる場所で、大人の時間をお過ごしください</p>
-   <%= image_tag 'main4.jpg', class: 'mein'%> 
-  <div class= "keyword-top">
- <%= search_form_for @q, url: foodstalls_search_path do |f| %>
-  <%= f.label :category_id_eq, 'カテゴリー' %>
-  <%= f.collection_select(:category_id_eq, Category.all, :id, :name, include_blank: '指定なし' )%>
-  
-   <%= f.label :prefecture_id_eq, '都道府県' %>
-     <%= f.collection_select :prefecture_id_eq, Prefecture.all, :id, :name, include_blank: '指定なし'%>
-    
-  <%= f.submit '検索' %>
- <% end %>
- </div>
-<div class="keyword-bottom">
-  <%= search_form_for @q, url: foodstalls_search_path do |f| %>
-  <%=f.search_field :title_or_shop_name_or_city_name_cont, placeholder: "店舗名"%>
-  <%= f.submit "検索"%>
+  </header>
+ <div class="home-title">
+  　<h2>週末はみんなでchill しよう</h2>
+</div> 
+<dl class="keyword">
+  <dt>
+   <%= search_form_for @p, url: foodstalls_search_path do |f| %>
+     <%= f.label :category_eq, 'カテゴリー' %> 
+        <%= f.collection_select(:category_id_eq, @category, :id, :name, include_blank: '指定なし' )%>
+        <%= f.label :prefecture_id_eq, '都道府県' %>
+      <%= f.collection_select(:prefecture_id_eq, @prefecture, :id, :name, include_blank: '指定なし'  )%>
+   <%=f.text_field :title_or_shop_name_or_city_name_cont, placeholder: "キーワード"%>
+  </dt>
+  <dd>
+   <%= f.submit "検索", class: 'keyword-btn'%>
+  </dd>
   <% end %>
-</div>
-</div>
 
+</dl>
+
+  
+</div>
+  <div class="home-text">
+    <h1 class="home-text-header">リラックスするお店を探す時はchillアプリ</h1>
+    <p class="home-text-a">このアプリは、個室や眺めのいい景色が見えるお店、今流行りのシーシャ屋を探したり予約もできたりできます</p>
+    <p class="home-text-b">お店を経営している人は、このアプリに掲載させることができる機能があります</p>
+  </div>
+  <h1 class="home-description-title">機能説明</h1>
+   <div class="home-description">
+      <div class="home-description-left">
+         <h2>キーワード検索機能</h2>
+         <%= image_tag 'main4.jpg', class: 'image-left'%>
+      </div>
+      <div class="home-description-center">
+        <h2>オーナー出店機能</h2>
+        <%=  image_tag 'main4.jpg', class: 'image-center'%>
+      </div>
+      <div class="home-description-right">
+        <h2>予約機能</h2>
+        <%= image_tag 'main4.jpg', class: 'image-right'%>
+      </div>
+   </div>
+   <h2 class="home-ranking">エリアから探す</h2>
+    <div class="ranking">
+    <%#<% @prefecture.all.each do |prefecture| %>
+      <td>
+      
+      <%= link_to '東京',{:controller=>"foodstalls",:action=>"search",:p=>{:prefecture_id_cont=>'東京'}}%>
+      <%= link_to '関東',{:controller=>"foodstalls",:action=>"search",:p=>{:prefecture_id_cont=>'関東'}}%>
+      <%= link_to '北海道',{:controller=>"foodstalls",:action=>"search",:p=>{:prefecture_id_cont=>'北海道'}}%>
+      <%#<%= link_to prefecture.name, foodstalls_search_path(prefecture.id)  %>  
+     </td>
+    </div>
+  <%#<% end %>
    <% if owner_signed_in?%>
   <%= render "owners/shared/footer" %>
   <%else%>
