@@ -3,17 +3,25 @@ class FoodstallsController < ApplicationController
   def index
     @foodstalls = Foodstall.all
      set_foodstall_column
-    @foodstalls = @p.result(distinct: true)
+    @results = @p.result
     @prefecture = Prefecture.where(params[:id])
     @category = Category.where(params[:id])
+    
   end
 
   def new
     @foodstall = Foodstall.new
+    
   end
 
   def create
       @foodstall = Foodstall.new(foodstall_params)
+      @comment = Comment.new
+  if @foodstall.save
+    redirect_to foodstalls_path(:foodstall_id)
+else
+  render :new
+  end
      if @foodstall.save
        redirect_to foodstalls_search_path
    else
@@ -25,19 +33,22 @@ class FoodstallsController < ApplicationController
   @foodstalls = Foodstall.all
   @results = @p.result
    set_foodstall_column
-   @category = Category.where(params[:id])
-   @prefecture = Prefecture.where(params[:id])
+    @category = Category.where(params[:id])
+    @prefecture = Prefecture.where(params[:id])
  end
 
  def show
   @foodstall = Foodstall.find(params[:id])
-
+  @comments = @foodstall.comments.includes(:user)
   @date = Date.today
   @wdays = ['月','火','水','木','金','土','日']
   @comment = Comment.new
     @comments = @foodstall.comments.includes(:user)
  end
 
+ def comment
+  @comment = Comment.new
+ end
 
   private
   def foodstall_params

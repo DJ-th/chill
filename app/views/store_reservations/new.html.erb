@@ -25,11 +25,11 @@
         </div>
         <div class="form-group">
         <div class='form-text-wrap'>
-          <label class="form-text">予約時間</label>
-          <span class="indispensable">必須</span>
+          <label class="form-text">予約</label>
+          <span class="indispensable">予約</span>
         </div>
-          <%# <%= f.collection_select(:visit_date_time_id, Visit_Date_Time.all, :id, :name, {}, {class:"select-box", id:"Visit-date-time"}) %>   
-      </div>
+        <%= f.text_field :visit_date_time, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
+        </div>
       </div>
 
 

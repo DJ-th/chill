@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'foodstalls/search'
   resources :store_reservations
   resources :foodstalls do
-     collection do
+    resources :comments
+     member do
        get 'search'
      end
   end

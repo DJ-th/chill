@@ -1,5 +1,5 @@
-<% form_for url: foodstall_path(params[:id]) do |f| %>
-  <div><%= f.text_field :title, class: "hogehoge" %></div>
-  <%= f.text_area :content, class: "hogehoge", size: "100x50" %>
-  <%= f.submit %>
-<% end %>
+ <%= form_with(model:[@foodstall, @comment], url: foodstall_comments_path(:foodstall_id), local: true, class: "message-form") do |form| %>
+     <%= form.text_field :title, placeholder: "タイトル" %>
+     <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+     <%= form.submit "SEND" %>
+ <% end %>

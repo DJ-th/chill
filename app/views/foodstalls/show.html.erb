@@ -76,7 +76,7 @@
       <% 10.times do |d| %>
       <td>
         <% @th_date =  Date.today + d %>
-        <%=link_to  new_store_reservation_path  do %>
+        <%=link_to  new_store_reservation_path(visit_date_time_id: @visit_date_time)  do %>
        <% @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).length%>
        <%= @td_number %> 
      
@@ -89,14 +89,22 @@
 
 <div class="container">
     <% if user_signed_in? %>
-      <%= form_with(model: [@foodstall, @comment], local: true) do |form| %>
-      
-        <%= link_to 'コメント投稿フォーム', new_foodstall_comment_path(:foodstall_id) %>
-      <% end %>
+      <%= link_to 'コメントフォーム', new_foodstall_comment_path(:foodstall_id) %>
     <% else %>
       <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
-     
+    <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% @comments.each do |comment| %>
+        <p>
+          <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
+          <%= comment.text %>
+        </p>
+      <% end %>
+    </div>
+
+
+
 
 
 
