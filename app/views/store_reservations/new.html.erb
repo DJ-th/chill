@@ -1,40 +1,33 @@
 <div class="">
 
 <h1>予約フォーム</h1>
- <%= form_with(model: @store_reservation, local: true) do |f| %>
+ <%= form_with(model: @store_reservation_path, local: true) do |fast| %>
 <div class="form-group">
 　 <div class='form-text-wrap'>
      <label class="form-text">名前</label>
        <span class="indispensable">必須</span>
  　</div>
-      <%= f.text_field :name%>
+      <%= fast.text_field :name%>
   </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">メールアドレス</label>
           <span class="indispensable">必須</span>
         </div>
-         <%= f.text_field :email, class:"input-default", id:"email", placeholder:"例）aaaa@gmail.com" %> 
+         <%= fast.text_field :email, class:"input-default", id:"email", placeholder:"例）aaaa@gmail.com" %> 
       </div>
      <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">電話番号</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
-        </div>
-        <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">予約</label>
-          <span class="indispensable">予約</span>
-        </div>
-        <%= f.text_field :visit_date_time, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
+        <%= fast.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
         </div>
       </div>
 
 
         <div class="store_reservation-bottan">
-      <%= f.submit "予約確認画面"  %>
+      <%= fast.submit "予約確認画面"  %>
       <%=link_to 'もどる', root_path %>
     </div>
     <%end%>

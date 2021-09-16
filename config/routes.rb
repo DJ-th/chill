@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
    root to: 'foodstalls#index'
-  get 'foodstalls/search'
-  resources :store_reservations
+   get 'foodstalls/search'
   resources :foodstalls do
+    resources :store_reservations
     resources :comments
      member do
        get 'search'
