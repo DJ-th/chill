@@ -4,14 +4,20 @@ class StoreReservationsController < ApplicationController
   end
   def new
     @store_reservation = StoreReservation.new
-    @visit_date_time = VisitDateTime.find(params[:id])
+    #@visit_date_time = Visit_Date_Time.find(params[:id])
   end
-  def confirm
-    @post = Post.new(post_params)
-    render :new if @post.invalid?
+  def confirmation
+    @store_reservation = StoreReservation.new(store_reservation_params)
+    render :new if @store_reservation.invalid?
   end
   def create
-    store_reservation = StoreReservation.find(store_reservations_params)
+    @store_reservation = StoreReservation.new(store_reservations_params)
+   
+    if @store_reservation.save
+      render 'edit'
+    else
+      render 'new'
+    end
   end
 
   private

@@ -76,7 +76,7 @@
       <% 10.times do |d| %>
       <td>
         <% @th_date =  Date.today + d %>
-        <%=link_to  new_store_reservation_path(visit_date_time_id: @visit_date_time)  do %>
+        <%=link_to   new_foodstall_store_reservation_path(:foodstall_id)  do %>
        <% @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).length%>
        <%= @td_number %> 
      
