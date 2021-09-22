@@ -60,10 +60,9 @@
     <th>時間</th>
     <% 10.times do |n| %>
     <th> 
-
-          <% @th_date =  Date.today + n %>
-          <% @th_header = @th_date.strftime("%m/%d %a") %>
-          <%= @th_header %>
+      <% @th_date =  Date.today + n %>
+      <% @th_header = @th_date.strftime("%m/%d %a") %>
+      <%= @th_header %>
     </th>
   <%end%>
     </tr>
@@ -76,11 +75,18 @@
       <% 10.times do |d| %>
       <td>
         <% @th_date =  Date.today + d %>
+<<<<<<< Updated upstream
         <%=link_to   new_foodstall_store_reservation_path(:foodstall_id)  do %>
        <% @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).length%>
        <%= @td_number %> 
      
       <% end %>
+=======
+        <%=link_to new_foodstall_store_reservation_path(foodstall_id: @foodstall.id, re_date: @th_date, re_time: @th_time.hour)  do %>
+        <% @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).length%>
+        <%= @td_number %>
+        <% end %>
+>>>>>>> Stashed changes
       </td>
       <% end %>
     </tr>
