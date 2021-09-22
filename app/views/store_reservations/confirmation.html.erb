@@ -1,11 +1,16 @@
-<%= form_for @store_reservation do |f| %>
-  <%= @store_reservation.name %>
-  <%= @store_reservation.emai %>
-  <%= @store_reservation.phone_number%>
+  <%= @prev_store_reservation.name %>
+  <%= @prev_store_reservation.email %>
+  <%= @prev_store_reservation.phone_number %>
+  <%= @prev_store_reservation.visit_date_time %>
   <div class="actions">
-    <%= f.submit '投稿画面に戻る', name: 'back' %>
+    <%# '予約画面に戻る' %>
   </div>
+<%= form_with model: @new_store_reservation, url: foodstall_store_reservations_path(foodstall_id: params[:foodstall_id]), method: :post, local: true do |f| %>
+  <%= f.hidden_field :name, value: @prev_store_reservation.name %>
+  <%= f.hidden_field :email, value: @prev_store_reservation.email %>
+  <%= f.hidden_field :phone_number, value: @prev_store_reservation.phone_number %>
+  <%= f.hidden_field :visit_date_time, value: @prev_store_reservation.visit_date_time %>
   <div class="actions">
-    <%= f.submit '投稿する' %>
+    <%= f.submit '予約する' %>
   </div>
 <% end %>

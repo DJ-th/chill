@@ -1,7 +1,11 @@
 <div class="">
 
 <h1>予約フォーム</h1>
+<<<<<<< Updated upstream
  <%= form_with(model: @store_reservation_path, local: true) do |fast| %>
+=======
+ <%= form_with model: @store_reservation, url: confirmation_foodstall_store_reservations_path(params[:foodstall_id]), local: true do |f| %>
+>>>>>>> Stashed changes
 <div class="form-group">
 　 <div class='form-text-wrap'>
      <label class="form-text">名前</label>
@@ -21,7 +25,20 @@
           <label class="form-text">電話番号</label>
           <span class="indispensable">必須</span>
         </div>
+<<<<<<< Updated upstream
         <%= fast.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
+=======
+        <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
+        </div>
+        <div class="form-group">
+        <div class='form-text-wrap'>
+          <label class="form-text">予約</label>
+          <span class="indispensable">予約</span>
+        </div>
+        <% re_date = params[:re_date].to_date %>
+        <%= re_date.strftime("%Y年%-m月%-d日") %> <%= params[:re_time] + "時より" %>
+        <%= f.hidden_field :visit_date_time, value: DateTime.new(re_date.year,re_date.month,re_date.day,params[:re_time].to_i,00,00) %> 
+>>>>>>> Stashed changes
         </div>
       </div>
 
