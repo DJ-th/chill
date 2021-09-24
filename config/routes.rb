@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
    root to: 'foodstalls#index'
-<<<<<<< Updated upstream
-   get 'foodstalls/search'
-  resources :foodstalls do
-    resources :store_reservations
-=======
   get 'foodstalls/search'
   resources :foodstalls do
     resources :store_reservations do
@@ -22,7 +17,6 @@ Rails.application.routes.draw do
         post :confirmation
       end
     end
->>>>>>> Stashed changes
     resources :comments
      member do
        get 'search'
