@@ -2,9 +2,6 @@ class StoreReservationsController < ApplicationController
   def new
     @store_reservation = StoreReservation.new
   end
-  def index
-    
-  end
   def confirmation
     @prev_store_reservation = StoreReservation.new(store_reservations_params)
     @new_store_reservation = StoreReservation.new

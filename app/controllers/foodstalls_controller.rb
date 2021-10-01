@@ -43,7 +43,7 @@ else
   @date = Date.today
   @wdays = ['月','火','水','木','金','土','日']
   @comment = Comment.new
-    @comments = @foodstall.comments.includes(:user)
+  @comments = @foodstall.comments.includes(:user)
  end
 
  def comment

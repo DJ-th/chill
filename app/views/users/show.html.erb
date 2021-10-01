@@ -1,0 +1,15 @@
+<h1>プロフィール</h1>
+<h3><%= @name %></h3>
+<%if @store_reservation.length !=0%>
+<% @store_reservations.each do |store_reservation| %>
+<p>予約された店</p>
+<%= store_reservation.foodstall.shop_name %>
+<p>予約された時間</p>
+<%= store_reservation.visit_date_time.strftime("%Y年%-m月%-d日 %H:%M") %>
+<% end %>
+<%else%>
+予約されていません
+<% end %>
+<p>
+<%= link_to '戻る', root_path %>
+</p>

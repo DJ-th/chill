@@ -4,7 +4,7 @@
         <nav>
         <ul class="main-nav">
         <% if user_signed_in? %>
-        <li class="new-nav"><%= link_to current_user.name, "#" %></li>
+        <li class="new-nav"><%= link_to current_user.name, user_path([:user_id]) %></li>
         <li class="menu-nav"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete%></li>
         <% else %>
         <li class="new-nav"><%= link_to"新規登録",new_user_registration_path%></li>
