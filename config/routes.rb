@@ -9,16 +9,17 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-  resources :users 
+  
    root to: 'foodstalls#index'
    get 'foodstalls/search'
+   resources :users 
+   resources :comments
   resources :foodstalls do
     resources :store_reservations do
       collection do 
         post :confirmation
       end
     end
-    resources :comments
      member do
        get 'search'
      end

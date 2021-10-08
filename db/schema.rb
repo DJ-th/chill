@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_045356) do
+ActiveRecord::Schema.define(version: 2021_10_04_065507) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -34,9 +34,8 @@ ActiveRecord::Schema.define(version: 2021_08_06_045356) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "foodstall_id", null: false
-    t.string "title", null: false
+    t.integer "user_id"
+    t.integer "foodstall_id"
     t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(version: 2021_08_06_045356) do
     t.string "phone_number", null: false
     t.string "title", null: false
     t.string "text", null: false
+    t.integer "sale_status", default: 1, null: false
     t.bigint "owner_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

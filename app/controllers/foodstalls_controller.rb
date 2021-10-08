@@ -6,7 +6,6 @@ class FoodstallsController < ApplicationController
     @results = @p.result
     @prefecture = Prefecture.where(params[:id])
     @category = Category.where(params[:id])
-    
   end
 
   def new
@@ -22,11 +21,6 @@ class FoodstallsController < ApplicationController
 else
   render :new
   end
-     if @foodstall.save
-       redirect_to foodstalls_search_path
-   else
-     render :new
-   end
  end
 
  def search
@@ -41,6 +35,7 @@ else
   @foodstall = Foodstall.find(params[:id])
   @date = Date.today
   @wdays = ['月','火','水','木','金','土','日']
+  @comments = Comment.all
  end
 
   private

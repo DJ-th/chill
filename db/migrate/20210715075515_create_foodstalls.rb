@@ -11,6 +11,7 @@ class CreateFoodstalls < ActiveRecord::Migration[6.0]
       t.string     :phone_number,          null: false
       t.string     :title,                 null: false
       t.string     :text,                  null: false
+      t.integer :sale_status, null: false, default: 1
       t.references :owner,                 foreign_key: true
       t.timestamps
     end

@@ -86,3 +86,10 @@
     </tr>
     <% end %>
 </table>
+
+<h1>口コミ一覧</h1>
+<%= link_to '口コミを投稿する', new_comment_path(foodstall_id: @foodstall.id) %>
+<% @comments.each do |comment|%>
+<p><strong><%= link_to current_user.name, user_path(:user_id)%></strong>
+ <%= comment.text %></p>
+<% end %>

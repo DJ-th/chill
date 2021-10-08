@@ -49,22 +49,6 @@
         <%= image_tag 'main4.jpg', class: 'image-right'%>
       </div>
    </div>
-   <h2 class="home-ranking">エリアから探す</h2>
-    <div class="ranking">
-    
-      <td>
-      <% @prefecture.each do |prefecture|%>
-      <%= link_to "#{prefecture.name}", foodstalls_search_path(prefecture.id)%>
-      <% end %>
-      <%#<%= link_to '東京', search_foodstall_path(prefecture_id:2,method: :get) %>
-      <%#<%= link_to '東京', search_foodstall_path(prefecture_id: 2) %>
-      <%#<%= link_to '東京',foodstalls_search_path({:action=>"search", :controller=>"foodstalls", :prefecture_id=>2})%>
-      <%= link_to '関東',{:controller=>"foodstalls",:action=>"search",:p=>{:prefecture_id_cont=>'関東'}}%>
-      <%= link_to '北海道',{:controller=>"foodstalls",:action=>"search",:p=>{:prefecture_id_cont=>'北海道'}}%>
-      <%#<%= link_to prefecture.name, foodstalls_search_path(prefecture.id)  %>  
-     </td>
-    </div>
-  <%#<% end %>
    <% if owner_signed_in?%>
   <%= render "owners/shared/footer" %>
   <%else%>
