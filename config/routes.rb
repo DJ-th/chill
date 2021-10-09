@@ -13,13 +13,13 @@ Rails.application.routes.draw do
    root to: 'foodstalls#index'
    get 'foodstalls/search'
    resources :users 
-   resources :comments
   resources :foodstalls do
     resources :store_reservations do
       collection do 
         post :confirmation
       end
     end
+    resources :comments, only: [:new, :create]
      member do
        get 'search'
      end

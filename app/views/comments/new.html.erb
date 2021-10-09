@@ -1,5 +1,19 @@
 <h1>口コミ</h1>
- <%= form_with model:  @comment, url: comments_path(foodstall_id: params[:foodstall_id]), method: :post, local: true do |form| %>
+ <%= form_with model:  @comment, url:  foodstall_comments_path(foodstall_id: params[:foodstall_id]), method: :post, local: true do |form| %>
  <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
  <%= form.submit "SEND" %>
+ <div class="form-group row" id="star">
+    <%= form.label :raty,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= form.hidden_field :raty, id: :review_star %>
+  <script>
+    $('#star').raty({
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      scoreName: 'comment[raty]', 
+      half: true, 
+    });
+  </script>
+</div>
 <%end%>
