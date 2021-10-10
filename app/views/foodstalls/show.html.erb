@@ -10,6 +10,7 @@
   <%= @foodstall.shop_name %>
   </h1>
   </div>
+<%# 星型のレビュー平均値 %>
   
   <div class="foodstall-image">
   <% @foodstall.images.each do |image|%>
@@ -75,9 +76,8 @@
       <% 10.times do |d| %>
       <td>
         <% @th_date =  Date.today + d %>
-        <% if @td_number = StoreReservation.where(visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).where.not(visit_date_time: 2).blank?%>
+        <% if @td_number = StoreReservation.where(foodstall_id: @foodstall.id,visit_date_time: DateTime.new(@th_date.year, @th_date.month, @th_date.day, @th_time.hour, @th_time.min, @th_time.sec)).blank?%>
         <%= link_to "○", new_foodstall_store_reservation_path(foodstall_id: @foodstall.id, re_date: @th_date, re_time: @th_time.hour) %>
-        <%= @td_number %>
         <% else %>
         <span>×<span>
         <%end%>
@@ -102,9 +102,9 @@
       starOff: "<%= asset_path('star-off.png') %>",
       starOn: "<%= asset_path('star-on.png') %>",
       starHalf: "<%= asset_path('star-half.png') %>",
-      half: true,   # 星半分表示
-      readOnly: true,   # 読み取り専用
-      score: <%= comment.raty %>,   # 星評価の表示
+      half: true,   
+      readOnly: true,  
+      score: <%= comment.raty %>,   
     });
   </script>
   <%= comment.raty %>

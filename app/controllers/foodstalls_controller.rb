@@ -35,7 +35,8 @@ else
   @foodstall = Foodstall.find(params[:id])
   @date = Date.today
   @wdays = ['月','火','水','木','金','土','日']
-  @comments = Comment.all
+  #@comments = @foodstall.comments
+  @comments = Comment.where(foodstall_id: @foodstall.id)
  end
 
   private
