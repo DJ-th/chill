@@ -6,12 +6,12 @@
     <%= form_with(model: @foodstall, local: true) do |f| %>
     <div class="img-upload">
       <div class="weight-bold-text">
-        商品画像
+        店内画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
         <p>
-          クリックしてファイルをアップロード
+          店内写真
         </p>
         <%= f.file_field :images, name: 'foodstall[images][]', id: 'foodstall-image' %>
         <div id="image-list"></div>

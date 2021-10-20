@@ -22,9 +22,22 @@ class Foodstall < ApplicationRecord
     with_options format: { with: /\A\d{10,11}\z/} do
     validates :phone_number
     end
-    #  with_options numericality: { other_than: 1 } do
     validates :category_id
     validates :prefecture_id
-    #  end
    end
+   def avg_raty
+    unless self.comments.empty?
+      comments.average(:raty).round(1).to_f
+    else
+      0.0
+    end
+  end
+  def avg_raty_percentage
+    unless self.comments.empty?
+      comments.average(:raty).round(1).to_f*100/5
+    else
+      0.0
+    end
+  end
+
 end

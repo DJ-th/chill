@@ -8,7 +8,9 @@ require("@rails/activestorage").start()
 require("channels")
 require('../preview')
 window.$ = window.jQuery = require('jquery');
+require('jquery')
 require('packs/raty')
+require('./slick')
 //= require_tree 
 
 
@@ -19,3 +21,5 @@ require('packs/raty')
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+

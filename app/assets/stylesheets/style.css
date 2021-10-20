@@ -16,40 +16,41 @@ a{
 }
 /*_header.html.erb(owners/shared)*/
 .header{
-  height: 65vh;
-  background-image: url('main10.jpg');
   background-repeat: no-repeat;
   background-position: right bottom;
   background-size: cover;
   opacity: 0.9;
 }
 .header_bar{
+ position: relative;
  display: flex;
- justify-content: space-between;
+ left: 12px;
 }
 .logo{
   width: 120px;
   height: 70px;
-  margin-left: 100px;
+  padding-left: 60px;
 }
 .main-nav{
   display: flex;
   font-size: 1.25rem;
   text-transform: uppercase;
-  margin-top: 37px;
+  margin-top: 40px;
   list-style: none;
-  margin-right: 100px;
+  padding-right: 60px;
+  margin-left: 900px;
 }
 .main-nav li{
   margin-left: 36px;
 }
 .main-nav a {
-  color: black;
+  color: #111111;
+  text-shadow: -1px -2px 3px #ffffff;
 }
 .main-nav a hover{
-color: #000;
+color: #111111;
 }
-.new-nav{
+.new-nav {
  font-weight: 900;
 }
 .menu-nav{

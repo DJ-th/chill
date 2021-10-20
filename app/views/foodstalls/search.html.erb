@@ -4,36 +4,60 @@
   <%= render "users/shared/header" %>
   <%end%>
 
-<h1>
+<h1 class= "list-search">
   検索結果
 </h1>
 <%# 検索結果の個数で条件分岐 %>
 <% if @results.length !=0 %>
-  <% @results.each do |result| %>
-    <br>
-    <li class="list">
+ <% @results.each do |result| %>
+  <br>
+   <li class="list">
+    <div class="list-top">
       <h2 class="list-title">
-      <%= link_to foodstall_path(result.id) do %>
-      <%= result.shop_name%>
-      <p class="list-category"><%= result.category.name %></p>
-      <% end %>
-      <%= link_to foodstall_path(result.id) do %>
-      <% result.images.each do |image| %>
-      <%= image_tag image, class:'images' %>
-      <% end %>
-      <% end %>
+        <%= link_to foodstall_path(result.id), class:'list-title-name' do %>
+        <%= result.shop_name%>
       </h2>
+      <p class="list-category"><%= result.category.name %></p>
+       <% end %>
+    </div>
+      <h4 class= "list-perfecture" >
+         <%= result.prefecture.name %>
+      </h4>
       <div class="list-text">
-      <h4><%= result.prefecture.name %></h4>
-      <p><%= result.city_name %><%= result.address%><%= result.building_name%></p>
+        <p><nobr><%= result.city_name %><%= result.address%><%= result.building_name%></nobr></p>
+          <div class="average-search">
+            <% @ar = Comment.where(foodstall_id: result.id).select(:raty) %>
+            <% if @ar == [] %>
+            <% @avg = 0 %>
+            <%else%>
+            <% @avg = @ar.average(:raty).round(1) %>
+            <%end%>
+            <nobr><%= @avg %>点</nobr>
+            <span id="star-rate-<%= result.id %>"></span>
+          </div>
       </div>
-    </li>
-  <% end %>
+      <%= link_to foodstall_path(result.id) do %>
+           <%= image_tag result.images[0], class:'images' %>
+        <% end %>
+   </li>
+  <script>
+    $('#star-rate-<%= result.id %>').raty({
+      size: 36,
+      starOff: "<%= asset_path('star-off.png') %>",
+      starOn: "<%= asset_path('star-on.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,   
+      readOnly: true,  
+      score: <%= @avg %>,  
+    });
+  </script>
+ <% end %>
 <% else %>
   該当する商品はありません
 <% end %>
 
 
-
- <%= link_to 'トップページへ戻る', root_path %>
+<h3 class= "search-back">
+ <%= link_to 'トップページへ戻る', root_path, class: 'search-back-name' %>
+ </h3>
  

@@ -1,58 +1,56 @@
 <% if owner_signed_in?%>
   <%= render "owners/shared/header" %>
-  <%else%>
+<%else%>
   <%= render "users/shared/header" %>
-  <%end%>
+<%end%>
 
-  <div class="foodstall-show">
+  <div class="foodstall-image">
+    <% @foodstall.images.each do |image|%>
+     <%= image_tag  image %>
+    <% end %>
+  </div>
   <div class="foodstall-show-title">
-  <h1>
-  <%= @foodstall.shop_name %>
-  </h1>
+   <h1>
+     <%= @foodstall.shop_name %>
+   </h1>
   </div>
 <%# 星型のレビュー平均値 %>
-  
-  <div class="foodstall-image">
-  <% @foodstall.images.each do |image|%>
-  <%= image_tag  image %>
-  <% end %>
+  <div class= average-raty>
+    <%= @foodstall.avg_raty %>点(<%= @foodstall.comments.count %>件のレビュー)
   </div>
 
   <div class="footstall-category">
    <h5>
-   <%= @foodstall.category.name%>
+    <%= @foodstall.category.name%>
    </h5>
-   </div>
+  </div>
 
-   <div class="foodstall-title">
+  <div class="foodstall-title">
    <h2><%=@foodstall.title%></h2>
-   </div>
+  </div>
 
-   <div class="foodstall-text">
-   <p><%=@foodstall.text%></p>
-   </div>
+  <div class="foodstall-text">
+    <p><%=@foodstall.text%></p>
+  </div>
 
-   <div class="addresses">
-   <div class="foodstall-post">
-   <%= @foodstall.post_code %>
-   </div>
-
+<div class="addresses">
+  <div class="foodstall-post">
+    <%= @foodstall.post_code %>
+  </div>
    <div class="foodstall-prefecture">
-   <%= @foodstall.prefecture.name%>
+     <%= @foodstall.prefecture.name%>
    </div>
-   
    <div class="foodstall-adress">
-   <%= @foodstall.address %>
+     <%= @foodstall.address %>
    </div>
-
-   <div class="foodstall-building">
+  <div class="foodstall-building">
    <%= @foodstall.building_name %>
-   </div>
-   </div>
-
-<div class="food-stall">
-   <%= @foodstall.phone_number%>
+  </div>
 </div>
+
+ <div class="food-stall">
+   <%= @foodstall.phone_number%>
+ </div>
 <p>
   <%= @today&.strftime("< %m / %Y >") %>
 </p>
@@ -104,9 +102,9 @@
       starHalf: "<%= asset_path('star-half.png') %>",
       half: true,   
       readOnly: true,  
-      score: <%= comment.raty %>,   
+      score: <%= comment.raty %>,  
     });
   </script>
   <%= comment.raty %>
-</div>
+ </div>
 <% end %>

@@ -1,6 +1,5 @@
-<%# <div id= "home" class="big-bg"> %>
-<%# <%= image_tag 'main10.jpg', class: 'icon' %> 
-<header class="header">
+<header class="header-index">
+<img src="/assets/main10.jpg">
 <div class="main">
   <% if owner_signed_in?%>
   <%= render "owners/shared/header" %>
@@ -8,8 +7,9 @@
   <%= render "users/shared/header" %>
   <%end%>
   </header>
+</div>
  <div class="home-title">
-  　<h2>週末はみんなでchill しよう</h2>
+   <h2>週末はみんなでchill しよう</h2>
 </div> 
 <dl class="keyword">
   <dt>
@@ -38,7 +38,7 @@
    <div class="home-description">
       <div class="home-description-left">
          <h2>キーワード検索機能</h2>
-         <%= image_tag 'main4.jpg', class: 'image-left'%>
+         <%= image_tag 'main5.png', class: 'image-left'%>
       </div>
       <div class="home-description-center">
         <h2>オーナー出店機能</h2>
@@ -46,11 +46,47 @@
       </div>
       <div class="home-description-right">
         <h2>予約機能</h2>
-        <%= image_tag 'main4.jpg', class: 'image-right'%>
+        <%= image_tag 'main4.png', class: 'image-right'%>
       </div>
    </div>
+   <div class="ranking-top">
+     <h1 class= "ranking-title">ランキング</h1>
+     <%@all_ranks.each.with_index(1) do |ranking, i| %>
+     <div class=  "ranking-shop_name">
+     <h2>
+     第
+     <%= i %>
+     位
+     <%= ranking.shop_name%> 
+     <div class="average-ranking">
+            <% @ar = Comment.where(foodstall_id: ranking.id).select(:raty) %>
+            <% if @ar == [] %>
+            <% @avg = 0 %>
+            <%else%>
+            <% @avg = @ar.average(:raty).round(1) %>
+            <%end%>
+            <nobr><%= @avg %>点</nobr>
+            <span id="star-rate-<%= ranking.id %>"></span>
+      </div>
+       </h2>
+         <script>
+    $('#star-rate-<%= ranking.id %>').raty({
+      size: 36,
+      starOff: "<%= asset_path('star-off.png') %>",
+      starOn: "<%= asset_path('star-on.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,   
+      readOnly: true,  
+      score: <%= @avg %>,  
+    });
+  </script>
+  <% end %>
+  </div>
+   </div>
+   <div class= "index-footer">
    <% if owner_signed_in?%>
   <%= render "owners/shared/footer" %>
   <%else%>
   <%= render "users/shared/footer" %>
   <%end%>
+  </div>

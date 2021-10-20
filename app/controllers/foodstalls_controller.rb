@@ -5,7 +5,8 @@ class FoodstallsController < ApplicationController
      set_foodstall_column
     @results = @p.result
     @prefecture = Prefecture.where(params[:id])
-    @category = Category.where(params[:id])
+    @category = Category.where(params[:id]) 
+    @all_ranks = Foodstall.find(Comment.group(:foodstall_id).order('raty asc').limit(3).pluck(:raty))
   end
 
   def new
@@ -26,9 +27,9 @@ else
  def search
   @foodstalls = Foodstall.all
   @results = @p.result
-   set_foodstall_column
-    @category = Category.where(params[:id])
-    @prefecture = Prefecture.where(params[:id])
+  @category = Category.where(params[:id])
+  @prefecture = Prefecture.where(params[:id])
+  @comments = Comment.where(foodstall_id: @foodstalls.ids)
  end
 
  def show

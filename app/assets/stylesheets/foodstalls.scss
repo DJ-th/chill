@@ -3,13 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*--index.html.erb--*/
-.main{
+.header-index{
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  height: 70vh;
+  text-shadow: 0 0 100px rgba(252, 252, 1, 1);
+}
+.main{
+  position: absolute;
+  top :10px;
 }
 .home-title {
   position: absolute;
-  top: 70px;
-  left: 230px;
+  top: 150px;
+  left: 250px;
   font-size: 40px;
   color: black;
   padding-left: 100px;
@@ -19,7 +27,7 @@
   font-family: cursive;
 }
 dl.keyword{
-  width: 350px;
+  width: 400px;
   position:relative;
   background-color:#fff;
   border:1px solid #aaa;
@@ -27,8 +35,8 @@ dl.keyword{
   margin-left: 500px;
   margin-top: 200px;
   position: absolute;
-  top: 200px;
-  right: 590px;
+  top: 170px;
+  right: 525px;
 }
 dl.keyword dt{
   padding:3px;
@@ -50,7 +58,7 @@ dl.keyword dd{
   display:block;
   background:#5fad35;
   width:100%;
-  height:36px;
+  height:65px;
   line-height:36px;
   border:none;
   border-radius: 0 6px 6px 0;
@@ -80,36 +88,44 @@ dl.keyword dd{
   margin-top: 100px;
 }
 .home-text-header{
-  padding-left: 360px;
+  padding-left: 29%;
 }
 .home-text-a{
-  padding-left: 260px;
+  padding-left: 22%;
 }
 .home-text-b{
-  padding-left: 380px;
+  padding-left: 30%;
 }
 .home-description-title{
-  padding-left: 600px;
+  padding-left: 44%;
   padding-top: 90px;
 }
 .home-description{
   display: flex;
   justify-content: space-around;
-  padding-right: 160px;
+}
+.home-description-left h2 {
+  padding-left: 25%;
+}
+.home-description-center h2 {
+  padding-left: 25%;
+}
+.home-description-right h2 {
+  padding-left: 35%;
 }
 .image-left{
   padding-top: 20px;
-  width: 200px;
+  width: 400px;
   height: 300px;
 }
 .image-center{
   padding-top: 20px;
-  width: 200px;
+  width: 400px;
   height: 300px;
 }
 .image-right{
   padding-top: 20px;
-  width: 200px;
+  width: 400px;
   height: 300px;
 }
 .home-ranking{
@@ -124,23 +140,65 @@ dl.keyword dd{
   width: 150px;
   height: 150px;
 }
-/*--search.html.erb--*/
-.list {
-  border: solid 1px black;
-  width: 400px;
-  margin-left: 450px;
-  background-color: cornsilk;
-  text-align: center;
+.ranking-top{
+  margin-top: 100px;
+  
+}
+.ranking-title{
+  margin-left: 43%;
+}
+.ranking-shop_name{
   display: flex;
+  justify-content: space-around;
+}
+/*--search.html.erb--*/
+.list-search{
+  text-align: center;
+}
+.list{
+  position: relative;
+  text-align: center;
+  text-shadow: 1px 2px 3px #808080;
+}
+.list-title{
+  position: relative;
+  left: 15%;
+  bottom: -20px;
+}
+.list-title-name{
+  color: black;
+  
 }
 .list-category{
-  font-size: 15px;
-   top: 12px;
+  position: relative;
+  padding-left: 30%;
+  bottom: -20px;
 }
-.images{
-  width: 110px;
-  height: 150px;
+.list-perfecture{
+  position: relative;
+  padding-left: 30%;
+  bottom: -20px;
 }
 .list-text{
- 
+  position: relative;
+  text-align: right;
+  padding-right: 130px;
+  bottom: 100px;
 }
+.images{
+  position: relative;
+  padding-right: 35%;
+  bottom: 220px;
+  width: 200px;
+  height: 150px;
+}
+.search-back{
+  position: relative;
+  text-align: center;
+}
+.search-back-name{
+  color: black;
+}
+/*--new.html.erb--*/
+
+/*--show.html.erb--*/
