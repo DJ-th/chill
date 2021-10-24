@@ -1,101 +1,101 @@
-<div class="contents row">
-  <div class="container">
-    <h3>出店</h3>
-    </div>
-</div>
+<div class="new-group">
+  <h3 class="container">
+    新規出店
+  </h3>
     <%= form_with(model: @foodstall, local: true) do |f| %>
     <div class="img-upload">
       <div class="weight-bold-text">
         店内画像
         <span class="indispensable">必須</span>
       </div>
-      <div class="click-upload">
-        <p>
-          店内写真
-        </p>
-        <%= f.file_field :images, name: 'foodstall[images][]', id: 'foodstall-image' %>
-        <div id="image-list"></div>
-      </div>
+     <div class="click-upload">
+      <p>
+       店内写真
+      </p>
+          <div id= foodstall-image>
+            <%= f.label :images, "画像アップロード", class: "image_input_btn"  %>
+            <%= f.file_field :images, class: "image_form", name: 'foodstall[images][]'%>
+            <div id="image-list"></div>
+          </div>
+     </div>
     </div>
     <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">ジャンル</label>
+      <div class='form-text-wrap'>
+        <label class="form-text">ジャンル</label>
           <span class="indispensable">必須</span>
-        </div>
-          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>  
       </div>
-      <div class="form-group">
-     <div class='form-text-wrap'>
-     <label class="form-text">見出し</label>
+       <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>  
+      
+      <div class='form-text-wrap'>
+        <label class="form-text">店舗紹介タイトル</label>
           <span class="indispensable">必須</span>
-          </div>
-          <%= f.text_field :title %>
-         </div>
-         <div class="form-group">
-     <div class='form-text-wrap'>
-     <label class="form-text">テキスト</label>
-          <span class="indispensable">必須</span>
-          </div>
-      <%= f.text_area :text%>
-         </div>
-      <div class="form-group">
+      </div>
+         <%= f.text_field :title, {class: 'form-title'} %>
+
+        <div class='form-text-wrap'>
+            <label class="form-text">店舗紹介</label>
+              <span class="indispensable">必須</span>
+        </div>
+              <%= f.text_area :text, {class: 'form-text'}%>
+         
+      
         <div class='form-text-wrap'>
           <label class="form-text">店舗名</label>
           <span class="indispensable">必須</span>
         </div>
-         <%= f.text_field :shop_name, class:"input-default", id:"shop-name", placeholder:"例）セブンイレブン" %> 
-      </div>
-     <div class="form-group">
+         <%= f.text_field :shop_name, class:"form-shop_name", id:"shop-name", placeholder:"例）セブンイレブン" %> 
+      
+     
         <div class='form-text-wrap'>
           <label class="form-text">郵便番号</label>
           <span class="indispensable">必須</span>
         </div>
-         <%= f.text_field :post_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %> 
-      </div>
-      <div class="form-group">
+         <%= f.text_field :post_code, class:"form-post_code", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %> 
+      
+      
         <div class='form-text-wrap'>
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"select-box", id:"prefecture"}) %>  
-      </div>
-      </div>
-      <div class="form-group">
+          <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"form-prefecture", id:"prefecture"}) %>  
+      
+     
+
         <div class='form-text-wrap'>
           <label class="form-text">住所</label>
           <span class="indispensable">必須</span>
         </div>
          <%= f.text_field :city_name, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%> 
-      </div>
-      <div class="form-group">
+      
+      
         <div class='form-text-wrap'>
           <label class="form-text">番地</label>
           <span class="indispensable">必須</span>
         </div>
          <%= f.text_field :address, class:"input-default", id:"addresses", placeholder:"例）青山1-1-1"%> 
-      </div>
-      <div class="form-group">
+      
+      
         <div class='form-text-wrap'>
           <label class="form-text">建物名</label>
           <span class="form-any">必須</span>
         </div>
          <%= f.text_field :building_name, class:"input-default", id:"building", placeholder:"例）柳ビル103"%> 
-      </div>
-      <div class="form-group">
+      
+     
         <div class='form-text-wrap'>
-          <label class="form-text">電話番号</label>
+          <label class="form-text">店舗の電話番号</label>
           <span class="indispensable">必須</span>
         </div>
-         <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%> 
-      </div>
+         <%= f.text_field :phone_number, class:"form-phone-number", id:"phone-number", placeholder:"例）09012345678",maxlength:"11"%> 
+      
     </div>
-    <div class="foodstall-bottan">
-      <%= f.submit "出店する"  %>
-      <%=link_to 'もどる', root_path %>
+    <div class="foodstall-bottom">
+      <%= f.submit "出店する", class: "foodstall-bottan"  %>
+      <%=link_to 'もどる', root_path, {class: "nav-link"}%>
     </div>
     <div id="image-list"></div>
     <% end %>
-
+</div>
     <% @foodstall.images.each do |foodstall| %>
   <%= image_tag image, class: 'images' %>
 <% end %>

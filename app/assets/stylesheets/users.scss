@@ -1,3 +1,59 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*--user_show.html.erb--*/
+.user-show{
+  text-align: center;
+  height: 100vh;
+  background-image: url(user_show.jpg);
+  background-size: 100% 100%;
+  opacity: 0.9;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+}
+.user_profil{
+  margin: 0 0 5% 0 ;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+}
+.user-show-name{
+  font-size: 40px;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+}
+.topnewbox{
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  text-shadow: 1px 2px 3px white;
+}
+.user-show-store_reservation{
+  margin-bottom: 30px;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+  font-size: 40px;
+}
+.user-show-shop_name{
+  font-size: 25px;
+  text-shadow: 1px 2px 3px #808080;
+}
+.user-show-store_reservation-visit_date_time{
+  font-size: 40px;
+  text-shadow: 1px 2px 3px #808080;
+  margin-top: 50px;
+}
+.user-show-visit_date_time{
+  margin-top: 50px;
+  font-size: 20px;
+  text-shadow: 1px 2px 3px #808080;
+}
+.user-show-root_back{
+  margin-top: 90px;
+}
+.user-show-back{
+  color: #000;
+  font-size: 20px;
+  text-shadow: 1px 2px 3px white;
+}
+

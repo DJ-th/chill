@@ -1,14 +1,15 @@
+<div class="foodstall-show">
 <% if owner_signed_in?%>
   <%= render "owners/shared/header" %>
 <%else%>
   <%= render "users/shared/header" %>
 <%end%>
-
-  <div class="foodstall-image">
+  <div class="foodstall-show-image">
     <% @foodstall.images.each do |image|%>
      <%= image_tag  image %>
     <% end %>
   </div>
+
   <div class="foodstall-show-title">
    <h1>
      <%= @foodstall.shop_name %>
@@ -47,10 +48,7 @@
    <%= @foodstall.building_name %>
   </div>
 </div>
-
- <div class="food-stall">
-   <%= @foodstall.phone_number%>
- </div>
+<div class="calendar">
 <p>
   <%= @today&.strftime("< %m / %Y >") %>
 </p>
@@ -84,12 +82,21 @@
     </tr>
     <% end %>
 </table>
+</div>
 
+<div class="foodstall-show-phone_number">
+   <%= @foodstall.phone_number%>
+ </div>
+
+<div class="show-comment">
 <h1>口コミ一覧</h1>
+<% if user_signed_in? %>
 <%= link_to '口コミを投稿する', new_foodstall_comment_path(foodstall_id: @foodstall.id) %>
+<%else%>
+<%end%>
 <% @comments.each do |comment|%>
-<p><strong><%= link_to current_user.name, user_path(:user_id)%></strong>
- <%= comment.text %></p>
+<p><strong><%= comment.user.name %></strong>
+ <p><%= comment.text %></p>
  <p>投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %></p>
  <div class="relative-post-evaluation">
   <span>評価：</span>
@@ -108,3 +115,10 @@
   <%= comment.raty %>
  </div>
 <% end %>
+</div>
+<div class="show-root_back">
+<%= link_to foodstalls_search_path do %>
+  <p class= "show-back">戻る</p>
+<% end %>
+</div>
+</div>

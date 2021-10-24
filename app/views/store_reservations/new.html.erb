@@ -1,46 +1,46 @@
-<div class="">
+<div class="new-store_reservation">
 
-<h1>予約フォーム</h1>
- <%= form_with model: @store_reservation, url: confirmation_foodstall_store_reservations_path(params[:foodstall_id]), local: true do |f| %>
-<div class="form-group">
-　 <div class='form-text-wrap'>
-     <label class="form-text">名前</label>
-       <span class="indispensable">必須</span>
- 　</div>
-      <%= f.text_field :name%>
-  </div>
-
-      <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">メールアドレス</label>
-          <span class="indispensable">必須</span>
-        </div>
-         <%= f.text_field :email, class:"input-default", id:"email", placeholder:"例）aaaa@gmail.com" %> 
+  <h1>予約フォーム</h1>
+    <%= form_with model: @store_reservation, url: confirmation_foodstall_store_reservations_path(params[:foodstall_id]), local: true do |f| %>
+    <div class="new-form-group">
+      <div class='new-form-text-wrap'>
+         <h3><label class="form-text">名前</label>
+           <span class="indispensable">必須</span></h3>
       </div>
-
-     <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">電話番号</label>
-          <span class="indispensable">必須</span>
-        </div> 
-        <%= f.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
-        </div>
-
-        <div class="form-group">
-        <div class='form-text-wrap'>
-          <label class="form-text">予約</label>
-          <span class="indispensable">日程</span>
-        </div>
-        <% re_date = params[:re_date].to_date %>
-        <%= re_date.strftime("%Y年%-m月%-d日") %> <%= params[:re_time] + "時より" %>
-        <%= f.hidden_field :visit_date_time, value: DateTime.new(re_date.year,re_date.month,re_date.day,params[:re_time].to_i,00,00) %> 
-        </div>
-      </div>
-
-
-        <div class="store_reservation-bottan">
-      <%= f.submit "予約確認画面"  %>
-      <%=link_to 'もどる', foodstall_path(params[:foodstall_id]) %>
+           <%= f.text_field :name%>
     </div>
-    <%end%>
+
+        <div class="new-form-group">
+          <div class='form-text-wrap'>
+            <h3><label class="form-text">メールアドレス</label>
+            <span class="indispensable">必須</span></h3>
+          </div>
+          <%= f.text_field :email, class:"input-default", id:"email", placeholder:"例）aaaa@gmail.com" %> 
+        </div>
+
+      <div class="new-form-group">
+          <div class='form-text-wrap'>
+            <h3><label class="form-text">電話番号</label>
+            <span class="indispensable">必須</span></h3>
+          </div> 
+          <%= f.text_field :phone_number, class:"new-input-default", id:"phone-number", placeholder:"例）08011112222", maxlength:"11" %> 
+          </div>
+
+          <div class="new-form-group">
+            <div class='form-text-wrap'>
+              <h3><label class="form-text">予約</label>
+              <span class="indispensable">日程</span></h3>
+            </div>
+            <% re_date = params[:re_date].to_date %>
+            <%= re_date.strftime("%Y年%-m月%-d日") %> <%= params[:re_time] + "時より" %>
+            <%= f.hidden_field :visit_date_time, value: DateTime.new(re_date.year,re_date.month,re_date.day,params[:re_time].to_i,00,00) %> 
+            </div>
+
+
+          <div class="store_reservation-bottan">
+        <%= f.submit "予約確認画面"  %>
+        <%=link_to 'もどる', foodstall_path(params[:foodstall_id]), {class: "new-nav-link"} %>
+      </div>
+      <%end%>
+</div>
     

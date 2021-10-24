@@ -11,7 +11,6 @@ class FoodstallsController < ApplicationController
 
   def new
     @foodstall = Foodstall.new
-    
   end
 
   def create

@@ -1,3 +1,56 @@
 // Place all the styles related to the store_reservation controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.new-store_reservation{
+  text-align: center;
+  background-image: url(new-store1.jpg);
+  opacity: 0.9;
+  background-size: 100% 100%;
+  height: 100vh;
+}
+.new-form-group{
+  margin-bottom: 50px;
+}
+.new-input-default{
+  width: 110px;
+}
+.new-nav-link{
+  font-size: 15px;
+  color: black;
+  text-shadow: 5px 2px 3px #808080;
+}
+.prev{
+  text-align: center;
+  background-image: url(new-store1.jpg);
+  background-size: 100% 100%;
+}
+.prev-name{
+  margin-top: 60px;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+}
+.prev-email{
+  margin-top: 60px;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+}
+.prev-phone_number{
+  margin-top: 60px;
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+}
+.prev-visit_date_time{
+  color: #000;
+  text-shadow: 1px 2px 3px #808080;
+  margin-top: 60px;
+}
+.actions{
+  display: flex;
+  margin-top: 60px;
+}
+.actions-btn{
+  height: 30px;
+}
+.prev-nav-link{
+  color: #000;
+}

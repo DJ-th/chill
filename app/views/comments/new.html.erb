@@ -1,8 +1,7 @@
-<h1>口コミ</h1>
+<div class="new-comment">
+<h1 class="comment-title">口コミ</h1>
  <%= form_with model:  @comment, url:  foodstall_comments_path(foodstall_id: params[:foodstall_id]), method: :post, local: true do |form| %>
- <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
- <%= form.submit "SEND" %>
- <div class="form-group row" id="star">
+ <div class="comment-form-group row" id="star">
     <%= form.label :raty,'評価 ', class:'col-md-3 col-form-label' %>
     <%= form.hidden_field :raty, id: :review_star %>
   <script>
@@ -16,4 +15,8 @@
     });
   </script>
 </div>
+ <div class="comment-area"><%= form.text_area :text, size: "40x5", placeholder: "コメント", rows: "2" %></div>
+ <div class="comment-send"><%= form.submit "コメントする", :class=>"comment-btn" %></div>
+ 
 <%end%>
+</div>

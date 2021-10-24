@@ -1,14 +1,29 @@
-  <%= @prev_store_reservation.name %>
-  <%= @prev_store_reservation.email %>
-  <%= @prev_store_reservation.phone_number %>
-  <%= @prev_store_reservation.visit_date_time %>
-<%= form_with model: @new_store_reservation, url: foodstall_store_reservations_path(foodstall_id: params[:foodstall_id]), method: :post, local: true do |f| %>
-  <%= f.hidden_field :name, value: @prev_store_reservation.name %>
-  <%= f.hidden_field :email, value: @prev_store_reservation.email %>
-  <%= f.hidden_field :phone_number, value: @prev_store_reservation.phone_number %>
-  <%= f.hidden_field :visit_date_time, value: @prev_store_reservation.visit_date_time %>
-  <div class="actions">
-    <%= f.submit '予約する' %>
-    <%= link_to '戻る', foodstall_path(params[:foodstall_id])%>
-  </div>
-<% end %>
+<div class="prev">
+      <h1>確認画面</h1>
+        <div class="prev-name">
+            <h3>名前</h3>
+              <%= @prev_store_reservation.name %>
+        </div>
+        <div class="prev-email">
+             <h3>メールアドレス</h3>
+              <%= @prev_store_reservation.email %>
+         </div>
+         <div class="prev-phone_number">
+           <h3>携帯電話</h3>
+           <%= @prev_store_reservation.phone_number %>
+         </div>
+         <div class="prev-visit_date_time">
+           <h3>予約時間</h3>
+           <%= @prev_store_reservation.visit_date_time.strftime("%Y年%-m月%-d日 %H:%M") %>
+         </div>
+                  <%= form_with model: @new_store_reservation, url: foodstall_store_reservations_path(foodstall_id: params[:foodstall_id]), method: :post, local: true do |f| %>
+                    <%= f.hidden_field :name, value: @prev_store_reservation.name %>
+                    <%= f.hidden_field :email, value: @prev_store_reservation.email %>
+                    <%= f.hidden_field :phone_number, value: @prev_store_reservation.phone_number %>
+                    <%= f.hidden_field :visit_date_time, value: @prev_store_reservation.visit_date_time %>
+         <div class="actions">
+                <%= f.submit '予約する', class: "actions-btn" %>
+                <%= link_to '戻る', foodstall_path(params[:foodstall_id]), {class: "prev-nav-link"} %>
+          </div>
+    <% end %>
+</div>
