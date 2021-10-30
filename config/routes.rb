@@ -13,7 +13,6 @@ Rails.application.routes.draw do
    root to: 'foodstalls#index'
    get 'foodstalls/search'
    resources :users
-   end
   resources :foodstalls do
     resources :store_reservations do
       collection do
