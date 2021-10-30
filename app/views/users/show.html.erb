@@ -1,11 +1,11 @@
 <div class="user-show">
   <h1 class="user_profil">プロフィール</h1>
-    <h3 class="user-show-name"><%= @name %></h3>
-      <%if @store_reservation.length !=0%>
+    <h3 class="user-show-name"><%= current_user.name %></h3>
+      <%if @store_reservations.length !=0%>
         <% @store_reservations.each do |store_reservation| %>
         <div class="topnewbox">
           <h3 class="user-show-store_reservation">予約された店</h3>
-          <h4 class="user-show-shop_name"><%= store_reservation.foodstall.shop_name %></h4>
+          <h4 class="user-show-shop_name"><%= store_reservation.foodstall.shop_name%></h4>
           <h3 class="user-show-store_reservation-visit_date_time">予約された時間</h3>
           <h5 class="user-show-visit_date_time"><%= store_reservation.visit_date_time.strftime("%Y年%-m月%-d日 %H:%M") %></h5>
         </div>

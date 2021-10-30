@@ -1,4 +1,5 @@
 class StoreReservationsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :confirmation, :create]
   def new
     @store_reservation = StoreReservation.new
   end

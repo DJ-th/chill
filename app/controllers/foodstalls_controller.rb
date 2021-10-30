@@ -1,12 +1,14 @@
 class FoodstallsController < ApplicationController
+  before_action :authenticate_owner!, only: [:new]
   before_action :search_foodstall, only: [:index, :search]
   def index
     @foodstalls = Foodstall.all
      set_foodstall_column
     @results = @p.result
     @prefecture = Prefecture.where(params[:id])
-    @category = Category.where(params[:id]) 
-    @all_ranks = Foodstall.find(Comment.group(:foodstall_id).order('raty asc').limit(3).pluck(:raty))
+    @category = Category.where(params[:id])
+    @comment = Comment.all
+    @all_ranks = Comment.where(foodstall_id: @foodstalls.ids, raty: @comment.ids).order('raty desc').limit(3)
   end
 
   def new
