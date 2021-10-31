@@ -12,9 +12,9 @@ Rails.application.routes.draw do
   
    root to: 'foodstalls#index'
    get 'foodstalls/search'
-   resources :users
+   resources :users, only: [:show]
   resources :foodstalls do
-    resources :store_reservations do
+    resources :store_reservations, only: [:new, :confirmation, :create] do
       collection do
         post :confirmation
       end
