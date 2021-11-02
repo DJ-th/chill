@@ -43,7 +43,7 @@ else
 
   private
   def foodstall_params
-    params.require(:foodstall).permit(:category_id, :shop_name, :post_code, :city_name, :address, :phone_number, :building_name, :prefecture_id, :title, :text, images:[]).merge(owner_id: current_owner.id)
+    params.require(:foodstall).permit(:category_id, :shop_name, :post_code, :city_name, :address, :phone_number, :building_name, :prefecture_id, :title, :text, images: []).merge(owner_id: current_owner.id)
   end
   def set_q
     @p = Foodstall.ransack(params[:q])

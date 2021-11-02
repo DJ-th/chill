@@ -36,5 +36,5 @@ document.addEventListener('DOMContentLoaded', function(){
 
       createImageHTML(blob)
   });
-}
+ }
 });

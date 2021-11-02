@@ -10,7 +10,6 @@ require('../preview')
 window.$ = window.jQuery = require('jquery');
 require('jquery')
 require('packs/raty')
-require('./slick')
 //= require_tree 
 
 
