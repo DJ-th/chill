@@ -1,24 +1,35 @@
-# README
+# chill
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
+https://chill-35945app.heroku.com  
+個室や眺めのいい景色が見えるお店、今流行りのお店を探したり予約ができます  
+経営者の方は、自分のお店を掲載させることが可能です。  
 
-Things you may want to cover:
+## テストアカウント
+こちらをご使用ください  
+user  
+name:test  
+email:test@test.com  
+password: 123456  
+owner  
+name:test1  
+Email:test1@test1.com  
+Password: 19981020  
 
-* Ruby version
+## 作成期間  
+2021年07月21日~2021年11月01日  
+3ヶ月11日  
 
-* System dependencies
+## 主な機能
+・予約機能  
+・ユーザーandオーナー  
+・出店機能  
+・コメント機能  
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 仕様  
+・rubu on rails   
+・javascript  
+・jquery  
+・html  
+・css  
+・heroku  
