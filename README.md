@@ -9,7 +9,7 @@ https://chill-35945app.heroku.com
 こちらをご使用ください  
 user  
 name:test  
-email:test@test.com  
+email:test@test  
 password: 123456  
 owner  
 name:test1  
