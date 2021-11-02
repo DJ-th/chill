@@ -1,5 +1,5 @@
 # chill
-
+![chill](readme1.jpg)
 ## 概要
 https://chill-35945app.heroku.com  
 個室や眺めのいい景色が見えるお店、今流行りのお店を探したり予約ができます  
