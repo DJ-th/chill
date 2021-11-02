@@ -61,3 +61,4 @@ gem 'active_hash'
 gem 'ransack'
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem "aws-sdk-s3", require: false
